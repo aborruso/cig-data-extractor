@@ -1,0 +1,7 @@
+# Set default line endings to LF for all text files
+* text=auto
+
+# Enforce LF for specific file types to prevent cross-platform issues
+*.csv text eol=lf
+*.json text eol=lf
+*.xml text eol=lf
