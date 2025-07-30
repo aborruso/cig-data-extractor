@@ -11,3 +11,5 @@
 *   Configurazione del controllo versione con Git e `.gitignore`.
 *   Correzione della formattazione Markdown per `PRD.md` e `README.md`.
 *   Creazione dell'eseguibile autoconsistente tramite PyInstaller.
+*   **Aggiornamento dello script `get_cig_data_requests.py` per supportare l'opzione `-o` (o `--output-path`) come percorso completo del file di output per il JSON light, con verifica dell'esistenza del file.**
+*   **Aggiornamento del `README.md` per documentare la nuova funzionalità dell'opzione `-o`.**
