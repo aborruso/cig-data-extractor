@@ -165,6 +165,8 @@ Il JSON "light" (`<CIG_NUMBER>.json`) è la versione elaborata dei dati, con i c
 
 ## Descrizione dei Campi
 
+> **Nota:** Lo schema dati e le descrizioni dei campi in questa sezione sono stati generati automaticamente da un'intelligenza artificiale basandosi su un campione di dati. Sebbene sia stato fatto ogni sforzo per garantirne l'accuratezza, potrebbero contenere imprecisioni o omissioni. Si raccomanda vivamente di verificare sempre le informazioni con la documentazione ufficiale dell'ANAC o con un'analisi diretta dei dati grezzi.
+
 | Campo | Tipo | Descrizione | Note |
 |---|---|---|---|
 | `template` | string | Indica il template utilizzato per la gara. | Attualmente "N/A" per i dati estratti. |
