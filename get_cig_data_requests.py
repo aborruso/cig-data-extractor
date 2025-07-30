@@ -1,6 +1,8 @@
 import requests
 import json
 import sys
+import os
+import argparse
 
 def is_json(myjson):
     try:
@@ -9,7 +11,7 @@ def is_json(myjson):
         return False
     return True
 
-def get_cig_data_direct(cig_number):
+def get_cig_data_direct(cig_number, output_file_path=None):
     url = "https://dati.anticorruzione.it/api/v1/chart/data?form_data=%7B%22slice_id%22%3A372%7D&dashboard_id=26&force"
 
     headers = {
@@ -17,7 +19,7 @@ def get_cig_data_direct(cig_number):
         'content-type': 'application/json',
         'origin': 'https://dati.anticorruzione.it',
         'referer': f'https://dati.anticorruzione.it/superset/dashboard/dettaglio_cig/?UUID=some_uuid&cig={cig_number}', # UUID è un placeholder
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
+        'user-agent': 'Mozilla/5.5 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
     }
 
     # Il payload JSON della richiesta POST
@@ -92,19 +94,12 @@ def get_cig_data_direct(cig_number):
         print("Dati JSON grezzi ricevuti.")
 
         # Controlla se sono stati trovati dati per il CIG
-        # Aggiunto controllo per 'stazione_appaltante' == 'N/A' per CIG non validi
         if not raw_json_data.get('result') or not raw_json_data['result'][0].get('data') or \
            raw_json_data['result'][0].get('rowcount') == 0 or \
            (raw_json_data['result'][0].get('rowcount') == 1 and \
             raw_json_data['result'][0]['data'][0].get('stazione_appaltante') == 'N/A'):
             print(f"Nessun dato trovato per il CIG: {cig_number}")
             return None, None
-
-        # Salva il JSON grezzo con il suffisso _raw
-        raw_output_filename = f"{cig_number}_raw.json"
-        with open(raw_output_filename, 'w', encoding='utf-8') as f:
-            json.dump(raw_json_data, f, ensure_ascii=False, indent=4)
-        print(f"Dati grezzi salvati in: {raw_output_filename}")
 
         # Processa per la versione light
         light_data = {}
@@ -115,13 +110,36 @@ def get_cig_data_direct(cig_number):
             else:
                 light_data[key] = value
 
-        # Salva la versione light senza suffisso
-        light_output_filename = f"{cig_number}.json"
-        with open(light_output_filename, 'w', encoding='utf-8') as f:
-            json.dump(light_data, f, ensure_ascii=False, indent=4)
-        print(f"Dati light salvati in: {light_output_filename}")
+        # Gestione del percorso di output
+        if output_file_path:
+            # Verifica se il file esiste già
+            if os.path.exists(output_file_path):
+                print(f"Errore: Il file di output specificato esiste già: {output_file_path}")
+                return None, None
+            
+            # Crea la directory se non esiste
+            output_dir = os.path.dirname(output_file_path)
+            if output_dir and not os.path.exists(output_dir):
+                os.makedirs(output_dir)
 
-        return raw_output_filename, light_output_filename
+            with open(output_file_path, 'w', encoding='utf-8') as f:
+                json.dump(light_data, f, ensure_ascii=False, indent=4)
+            print(f"Dati light salvati in: {output_file_path}")
+            return None, output_file_path # Non salviamo il raw se specificato output_path
+        else:
+            # Salva il JSON grezzo con il suffisso _raw
+            raw_output_filename = f"{cig_number}_raw.json"
+            with open(raw_output_filename, 'w', encoding='utf-8') as f:
+                json.dump(raw_json_data, f, ensure_ascii=False, indent=4)
+            print(f"Dati grezzi salvati in: {raw_output_filename}")
+
+            # Salva la versione light senza suffisso
+            light_output_filename = f"{cig_number}.json"
+            with open(light_output_filename, 'w', encoding='utf-8') as f:
+                json.dump(light_data, f, ensure_ascii=False, indent=4)
+            print(f"Dati light salvati in: {light_output_filename}")
+            return raw_output_filename, light_output_filename
+
     except requests.exceptions.RequestException as e:
         print(f"Errore durante la richiesta API: {e}")
         if response.status_code:
@@ -130,13 +148,17 @@ def get_cig_data_direct(cig_number):
         return None, None
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Utilizzo: python3 get_cig_data_requests.py <CIG_NUMBER>")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Estrae dati CIG dal portale ANAC.")
+    parser.add_argument("cig_number", help="Il Codice Identificativo Gara (CIG) da estrarre.")
+    parser.add_argument("-o", "--output-path", help="Percorso completo del file JSON light di output. Se specificato, solo il file light verrà salvato a questo percorso. Se il file esiste già, l'operazione verrà bloccata.")
+    
+    args = parser.parse_args()
 
-    cig_to_process = sys.argv[1]
-    raw_file, light_file = get_cig_data_direct(cig_to_process)
-    if raw_file and light_file:
-        print(f"Processo completato per CIG {cig_to_process}. Dati grezzi in {raw_file}, dati light in {light_file}")
+    raw_file, light_file = get_cig_data_direct(args.cig_number, args.output_path)
+    if raw_file or light_file:
+        if args.output_path:
+            print(f"Processo completato per CIG {args.cig_number}. Dati light salvati in {light_file}")
+        else:
+            print(f"Processo completato per CIG {args.cig_number}. Dati grezzi in {raw_file}, dati light in {light_file}")
     else:
-        print(f"Impossibile recuperare i dati per CIG {cig_to_process}.")
+        print(f"Impossibile recuperare i dati per CIG {args.cig_number}.")
