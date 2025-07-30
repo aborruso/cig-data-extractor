@@ -16,9 +16,9 @@ Lo strumento è progettato per recuperare i dati dettagliati di un CIG specifico
 
 ## Requisiti
 
-### Installazione
+### Installazione (Multipiattaforma)
 
-Puoi installare `cig-data-extractor` tramite `pip` o `uv` (consigliato per velocità e gestione delle dipendenze):
+Puoi installare `cig-data-extractor` tramite `pip` o `uv` (consigliato per velocità e gestione delle dipendenze). Questo metodo di installazione è **multipiattaforma** e funzionerà su Linux, macOS e Windows.
 
 #### Tramite pip
 
@@ -34,9 +34,9 @@ Se hai `uv` installato, puoi installare il pacchetto come un tool:
 uv tool install cig-data-extractor
 ```
 
-### Per l'Eseguibile Autoconsistente
+### Per l'Eseguibile Autoconsistente (Solo Linux)
 
-Nessun requisito aggiuntivo. L'eseguibile include tutte le dipendenze necessarie.
+Nessun requisito aggiuntivo. L'eseguibile include tutte le dipendenze necessarie. **Attualmente, l'eseguibile compilato è disponibile solo per sistemi Linux.**
 
 ### Per lo Script Python (se si esegue il `.py`)
 
