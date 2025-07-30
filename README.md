@@ -1,5 +1,7 @@
 # CIG Data Extractor
 
+[![PyPI version](https://badge.fury.io/py/cig-data-extractor.svg)](https://badge.fury.io/py/cig-data-extractor)
+
 Questo repository contiene uno script Python e un eseguibile standalone per l'estrazione automatizzata di dati relativi ai CIG (Codice Identificativo Gara) dal portale `dati.anticorruzione.it` dell'Autorità Nazionale Anticorruzione (ANAC).
 
 Lo strumento è progettato per recuperare i dati dettagliati di un CIG specifico e fornirli in due formati JSON: una versione grezza (direttamente dall'API) e una versione "light" con i dati annidati già parsificati per una maggiore leggibilità e usabilità.
