@@ -63,7 +63,9 @@ Esempio per CIG `918052266A`:
 * `918052266A_raw.json`
 * `918052266A.json`
 
-Ecco un estratto del file `918052266A.json` (versione light):
+A seguire un estratto del file `918052266A.json` (versione light).
+
+👉 Qui dettagli sullo schema dati: [docs/data_dictionary.md](docs/data_dictionary.md)
 
 ```json
 {
