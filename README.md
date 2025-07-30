@@ -45,6 +45,7 @@ cig-data-extractor <CIG_NUMBER> [-o <OUTPUT_FILE_PATH>]
 ```
 
 Esempi:
+
 ```bash
 cig-data-extractor 918052266A
 cig-data-extractor 918052266A -o /tmp/my_cig_data.json
