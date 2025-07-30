@@ -34,6 +34,26 @@ Se hai `uv` installato, puoi installare il pacchetto come un tool:
 uv tool install cig-data-extractor
 ```
 
+## Utilizzo (CLI)
+
+Una volta installato il pacchetto, puoi utilizzare lo strumento direttamente dalla riga di comando.
+
+Esegui il comando, sostituendo `<CIG_NUMBER>` con il CIG desiderato. Puoi anche specificare il percorso completo del file di output per il JSON light con l'opzione `-o` o `--output-path`.
+
+```bash
+cig-data-extractor <CIG_NUMBER> [-o <OUTPUT_FILE_PATH>]
+```
+
+Esempi:
+```bash
+cig-data-extractor 918052266A
+cig-data-extractor 918052266A -o /tmp/my_cig_data.json
+```
+
+## Sviluppo e Uso Avanzato
+
+Questa sezione è dedicata agli sviluppatori o agli utenti che desiderano utilizzare lo script Python direttamente o creare l'eseguibile autonomamente.
+
 ### Per l'Eseguibile Autoconsistente (Solo Linux)
 
 Nessun requisito aggiuntivo. L'eseguibile include tutte le dipendenze necessarie. **Attualmente, l'eseguibile compilato è disponibile solo per sistemi Linux.**
@@ -48,41 +68,6 @@ Per installare la libreria `requests`:
 ```bash
 pip install requests
 ```
-
-## Utilizzo
-
-### Utilizzo dell'Eseguibile Autoconsistente
-
-1. Scarica l'eseguibile dalla directory `dist/` (o crealo seguendo le istruzioni di sviluppo).
-2. Apri un terminale e naviga nella directory dove si trova l'eseguibile.
-3. Esegui il comando, sostituendo `<CIG_NUMBER>` con il CIG desiderato. Puoi anche specificare il percorso completo del file di output per il JSON light con l'opzione `-o` o `--output-path`.
-
-    ```bash
-    ./get_cig_data_requests <CIG_NUMBER> [-o <OUTPUT_FILE_PATH>]
-    ```
-
-    Esempi:
-    ```bash
-    ./get_cig_data_requests 918052266A
-    ./get_cig_data_requests 918052266A -o /tmp/my_cig_data.json
-    ```
-
-### Utilizzo dello Script Python
-
-1. Assicurati di avere Python 3 e la libreria `requests` installati.
-2. Apri un terminale e naviga nella directory dove si trova lo script `get_cig_data_requests.py`.
-3. Esegui il comando, sostituendo `<CIG_NUMBER>` con il CIG desiderato. Puoi anche specificare il percorso completo del file di output per il JSON light con l'opzione `-o` o `--output-path`.
-
-    ```bash
-    python3 get_cig_data_requests.py <CIG_NUMBER> [-o <OUTPUT_FILE_PATH>]
-    ```
-
-    Esempi:
-
-    ```bash
-    python3 get_cig_data_requests.py 918052266A
-    python3 get_cig_data_requests.py 918052266A -o /tmp/my_cig_data.json
-    ```
 
 ## Output
 
