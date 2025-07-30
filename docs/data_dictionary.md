@@ -234,9 +234,14 @@ Il JSON "light" (`<CIG_NUMBER>.json`) è la versione elaborata dei dati, con i c
 | `sospensioni` | null | Dettagli sulle sospensioni. | Attualmente `null`. |
 | `avvalimenti` | null | Dettagli sugli avvalimenti. | Attualmente `null`. |## Mini-guida: Come distinguere partecipanti e vincitori in un file JSON di gara ANAC
 
+## Varie
+
+### Mini-guida: Come distinguere partecipanti e vincitori in un file JSON di gara ANAC
+
 Nei file JSON ANAC relativi alle gare pubbliche, per capire **chi ha partecipato** e **chi ha vinto**, bisogna analizzare principalmente due sezioni del file:
 
-### 1. Sezione `partecipanti`
+#### 1. Sezione `partecipanti`
+
 Contiene l'elenco di tutti i soggetti che hanno presentato un'offerta. Ogni partecipante ha queste informazioni chiave:
 
 - `CODICE_FISCALE`: il codice fiscale del soggetto
@@ -245,19 +250,23 @@ Contiene l'elenco di tutti i soggetti che hanno presentato un'offerta. Ogni part
 - `COD_GRUPPO`: per identificare i membri di uno stesso ATI
 - `FLAG_AGGIUDICATARIO`: **questo è il campo decisivo**
 
-### 2. Campo `FLAG_AGGIUDICATARIO`
+#### 2. Campo `FLAG_AGGIUDICATARIO`
+
 - Se **valorizzato** (cioè contiene un numero, ad es. `2542577`), il partecipante è parte di un gruppo **aggiudicatario** (ha vinto la gara).
 - Se **assente o nullo**, significa che ha **partecipato ma non ha vinto**.
 - Il valore corrisponde all'`ID_AGGIUDICAZIONE` nella sezione `aggiudicazione`.
 
-### 3. Sezione `aggiudicazione`
+#### 3. Sezione `aggiudicazione`
+
 Qui trovi l'elenco delle aggiudicazioni con:
 - `ID_AGGIUDICAZIONE`: ID univoco dell'aggiudicazione
 - `ESITO`: se è "AGGIUDICATA"
 - `IMPORTO_AGGIUDICAZIONE`: importo totale del contratto
 
-### 🔍 Esempio pratico
+#### 🔍 Esempio pratico
+
 Supponiamo di avere questo partecipante:
+
 ```json
 {
   "DENOMINAZIONE": "GAMI ENGINEERING SRL",
@@ -272,12 +281,13 @@ E nella sezione `aggiudicazione` troviamo:
   "ESITO": "AGGIUDICATA"
 }
 ```
+
 Allora GAMI ENGINEERING SRL è tra i vincitori.
 
-### ✅ In sintesi
+#### ✅ In sintesi
+
 - Cerca la sezione `partecipanti`
 - Controlla chi ha il campo `FLAG_AGGIUDICATARIO` valorizzato
 - Confronta con l'`ID_AGGIUDICAZIONE` nella sezione `aggiudicazione`
 - Chi ha `FLAG_AGGIUDICATARIO` presente **ha vinto**
 - Gli altri sono **solo partecipanti**
-
