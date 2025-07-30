@@ -27,7 +27,7 @@ jobs:
         pip install pyinstaller requests
 
     - name: Build executable
-      run: pyinstaller --onefile get_cig_data_requests.py
+      run: pyinstaller --onefile src/cig_data_extractor/get_cig_data_requests.py
 
     - name: Create Release
       id: create_release
