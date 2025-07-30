@@ -147,7 +147,7 @@ def get_cig_data_direct(cig_number, output_file_path=None):
             print(f"Contenuto della risposta: {response.text}")
         return None, None
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(description="Estrae dati CIG dal portale ANAC.")
     parser.add_argument("cig_number", help="Il Codice Identificativo Gara (CIG) da estrarre.")
     parser.add_argument("-o", "--output-path", help="Percorso completo del file JSON light di output. Se specificato, solo il file light verrà salvato a questo percorso. Se il file esiste già, l'operazione verrà bloccata.")
@@ -162,3 +162,6 @@ if __name__ == "__main__":
             print(f"Processo completato per CIG {args.cig_number}. Dati grezzi in {raw_file}, dati light in {light_file}")
     else:
         print(f"Impossibile recuperare i dati per CIG {args.cig_number}.")
+
+if __name__ == "__main__":
+    main()
