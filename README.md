@@ -74,32 +74,63 @@ Esempio per CIG `918052266A`:
 * `918052266A_raw.json`
 * `918052266A.json`
 
-## Sviluppo
+Ecco un estratto del file `918052266A.json` (versione light):
 
-### Creazione dell'Eseguibile Autoconsistente
-
-Per creare l'eseguibile standalone, assicurati di avere [PyInstaller](https://pyinstaller.org/) installato:
-
-```bash
-pip install pyinstaller
+```json
+{
+    "template": "N/A",
+    "stazione_appaltante": {
+        "CF_AMMINISTRAZIONE_APPALTANTE": "05678721001",
+        "CITTA": "ROMA",
+        "CODICE_AUSA": "0000225258",
+        "DENOMINAZIONE_AMMINISTRAZIONE_APPALTANTE": "AGENZIA NAZIONALE PER L ATTRAZIONE DEGLI INVESTIMENTI E LO SVILUPPO D IMPRESA S.P.A.",
+        "DENOMINAZIONE_CENTRO_COSTO": "CENTRALE DI COMMITTENZA",
+        "ID_CENTRO_COSTO": "33986B12-6680-4F38-AE62-C734375E3060",
+        "INDIRIZZO": "VIA CALABRIA 46",
+        "ISTAT_COMUNE": "012058091",
+        "REGIONE": "LAZIO",
+        "SEZIONE_REGIONALE": "SEZIONE REGIONALE CENTRALE"
+    },
+    "bando": {
+        "CIG": "918052266A",
+        "COD_ESITO": 1.0,
+        "COD_MODALITA_REALIZZAZIONE": "17",
+        "COD_STRUMENTO_SVOLGIMENTO": 5.0,
+        "COD_TIPO_SCELTA_CONTRAENTE": "1",
+        "CPV": [
+            {
+                "COD_CPV": "71315400-3",
+                "DESCRIZIONE_CPV": "SERVIZI DI COLLAUDO E VERIFICA DI EDIFICI",
+                "FLAG_PREVALENTE": 1
+            }
+        ],
+        "DATA_COMUNICAZIONE_ESITO": "2023-07-07",
+        "DATA_SCADENZA_OFFERTA": "2022-05-26",
+        "DETTAGLIO_STATO": {
+            "DATA_ULTIMO_PERFEZIONAMENTO": "2022-05-24"
+        },
+        "DURATA_PREVISTA": 1220.0,
+        "ESITO": "AGGIUDICATA",
+        "FLAG_ESCLUSO": 0,
+        "FLAG_PREV_RIPETIZIONI": 0,
+        "FLAG_URGENZA": 0,
+        "IMPORTO_COMPLESSIVO_GARA": 23569628.59,
+        "IMPORTO_LOTTO": 3987864.4,
+        "IMPORTO_SICUREZZA": 0.0,
+        "LUOGO_NUTS": "ITF6",
+        "MODALITA_REALIZZAZIONE": "ACCORDO QUADRO",
+        "N_LOTTI_COMPONENTI": "7",
+        "NUMERO_GARA": "8519126",
+        "OGGETTO_GARA": "PROCEDURA DI GARA APERTA AI SENSI DEGLI ARTT. 54 E 60 DEL D.LGS. N. 50/2016, DA REALIZZARSI MEDIANTE PIATTAFORMA TELEMATICA, PER LA CONCLUSIONE DI ACCORDI QUADRO CON PIU’ OPERATORI ECONOMICI PER L’AFFIDAMENTO DI LAVORI (OG1 – OG11) E SERVIZI DI INGEGNERIA E ARCHITETTURA (E.21 – E.06 – S.03 – IA.02 – IA.04) PER LA NUOVA EDIFICAZIONE, RISTRUTTURAZIONE E RIQUALIFICAZIONE DI EDIFICI PUBBLICI RESIDENZIALI E NON.",
+        "OGGETTO_LOTTO": "ACCORDO QUADRO OG1 - OG11 - SUB - LOTTO PRESTAZIONALE 1 – SERVIZI DI DI COLLAUDO - LOTTO GEOGRAFICO: CALABRIA - SICILIA",
+        "OGGETTO_PRINCIPALE_CONTRATTO": "SERVIZI",
+        "SETTORE": "SETTORI ORDINARI",
+        "STATO": "ATTIVO",
+        "STRUMENTO_SVOLGIMENTO": "PROCEDURE SVOLTE ATTRAVERSO PIATTAFORME TELEMATICHE DI NEGOZIAZIONE ART.58",
+        "TIPO_CIG": "ORDINARIO",
+        "TIPO_SCELTA_CONTRAENTE": "PROCEDURA APERTA",
+        "FLAG_PNRR_PNC": 1,
+        "FLAG_QUOTE": "S"
+    }
+}
 ```
-
-Quindi, esegui il seguente comando nella directory principale del progetto:
-
-```bash
-pyinstaller --onefile get_cig_data_requests.py
-```
-
-Questo creerà l'eseguibile nella directory `dist/`.
-
-### Pulizia dei File di Build
-
-PyInstaller crea delle directory temporanee (`build/`) e un file `.spec`. Puoi rimuoverli con:
-
-```bash
-rm -rf build/ get_cig_data_requests.spec
-```
-
-## Licenza
-
-Questo progetto è rilasciato sotto licenza MIT. Vedi il file `LICENSE` per maggiori dettagli. (Nota: il file LICENSE non è incluso in questo esempio, ma è una buona pratica aggiungerlo).
