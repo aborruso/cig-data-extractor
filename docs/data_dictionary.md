@@ -61,7 +61,105 @@ Il JSON "light" (`<CIG_NUMBER>.json`) è la versione elaborata dei dati, con i c
         "TIPO_SCELTA_CONTRAENTE": "string",
         "FLAG_PNRR_PNC": "number (0/1)",
         "FLAG_QUOTE": "string"
-    }
+    },
+    "pubblicazioni": {
+        "DATA_CREAZIONE": "string (YYYY-MM-DD)",
+        "DATA_PUBBLICAZIONE": "string (YYYY-MM-DD)"
+    },
+    "categorie_opera": [
+        {
+            "COD_TIPO_CATEGORIA": "string",
+            "DESCRIZIONE": "string",
+            "DESCRIZIONE_TIPO_CATEGORIA": "string",
+            "ID_CATEGORIA": "string"
+        }
+    ],
+    "categorie_dpcm_aggregazione": "null",
+    "lavorazioni": "null",
+    "incaricati": [
+        {
+            "COD_RUOLO": "string",
+            "COGNOME": "string",
+            "DESCRIZIONE_RUOLO": "string",
+            "NOME": "string"
+        }
+    ],
+    "partecipanti": [
+        {
+            "COD_GRUPPO": "string",
+            "COD_RUOLO": "string",
+            "CODICE_FISCALE": "string",
+            "DENOMINAZIONE": "string",
+            "FLAG_AGGIUDICATARIO": "number",
+            "RUOLO": "string",
+            "TIPO_SOGGETTO": "string"
+        }
+    ],
+    "aggiudicazione": [
+        {
+            "ASTA_ELETTRONICA": "number (0/1)",
+            "COD_ESITO": "string",
+            "COD_PRESTAZIONI_COMPRESE": "number",
+            "CRITERIO_AGGIUDICAZIONE": "string",
+            "DATA_AGGIUDICAZIONE_DEFINITIVA": "string (YYYY-MM-DD)",
+            "DATA_COMUNICAZIONE_ESITO": "string (YYYY-MM-DD)",
+            "ESITO": "string",
+            "FLAG_PROC_ACCELERATA": "number (0/1)",
+            "FLAG_SCOMPUTO": "number (0/1)",
+            "FLAG_SUBAPPALTO": "number (0/1)",
+            "ID_AGGIUDICAZIONE": "number",
+            "IMPORTO_AGGIUDICAZIONE": "number",
+            "MASSIMO_RIBASSO": "number",
+            "MINIMO_RIBASSO": "number",
+            "N_MANIF_INTERESSE": "number",
+            "NUM_IMPRESE_INVITATE": "number",
+            "NUM_IMPRESE_OFFERENTI": "number",
+            "NUM_IMPRESE_RICHIEDENTI": "number",
+            "NUMERO_OFFERTE_AMMESSE": "number",
+            "NUMERO_OFFERTE_ESCLUSE": "number",
+            "PRESTAZIONI_COMPRESE": "string"
+        }
+    ],
+    "quadro_economico": [
+        {
+            "DESCRIZIONE_EVENTO": "string",
+            "DETTAGLIO_EVENTO": "number",
+            "ID_AGGIUDICAZIONE": "number",
+            "IMPORTO_FORNITURE": "number",
+            "IMPORTO_LAVORI": "number",
+            "IMPORTO_PROGETTAZIONE": "number",
+            "IMPORTO_SERVIZI": "number",
+            "IMPORTO_SICUREZZA": "number",
+            "SOMME_A_DISPOSIZIONE": "number",
+            "ULTERIORI_ONERI_NON_SOGGETTI_RIBASSO": "string"
+        }
+    ],
+    "fonti_finanziamento": [
+        {
+            "ALTRO": "number",
+            "APPORTO_DI_CAPITALI_PRIVATI": "number",
+            "ENTRATE_CON_DEST_VINCOLATA_PRIVATI": "number",
+            "ENTRATE_CON_DEST_VINCOLATA_PUBBLICA_COMUNITARIA": "number",
+            "ENTRATE_CON_DEST_VINCOLATA_PUBBLICA_NAZIONALE_ALTRI": "number",
+            "ENTRATE_CON_DEST_VINCOLATA_PUBBLICA_NAZIONALE_CENTRALE": "number",
+            "ENTRATE_CON_DEST_VINCOLATA_PUBBLICA_NAZIONALE_LOCALE": "number",
+            "ENTRATE_CON_DEST_VINCOLATA_PUBBLICA_NAZIONALE_REGIONALE": "number",
+            "FONDI_DI_BILANCIO_DELLA_STAZIONE_APPALTANTE": "number",
+            "FONDI_DI_BILANCIO_DELLAMMINISTRAZIONE_COMPETENTE": "number",
+            "ID_AGGIUDICAZIONE": "number",
+            "MUTUO": "number",
+            "SFRUTTAMENTO_ECONOMICO_E_FUNZIONALE_DEL_BENE": "number",
+            "TRASFERIMENTO_DI_IMMOBILI_EX_ART53_C6_DLGS_N163_06_ECONOMIA_SU_STANZIAMENTI_NON_VINCOLATI": "number"
+        }
+    ],
+    "avvio_contratto": "null",
+    "stati_avanzamento": "null",
+    "collaudo": "null",
+    "varianti": "null",
+    "fine_contratto": "null",
+    "subappalti": "null",
+    "sospensioni": "null",
+    "avvalimenti": "null"
 }
 ```
 
@@ -114,3 +212,22 @@ Il JSON "light" (`<CIG_NUMBER>.json`) è la versione elaborata dei dati, con i c
 | `bando.TIPO_SCELTA_CONTRAENTE` | string | Tipo di scelta del contraente. | |
 | `bando.FLAG_PNRR_PNC` | number | Flag PNRR/PNC (0 = No, 1 = Sì). | |
 | `bando.FLAG_QUOTE` | string | Flag quote (es. "S"). | |
+| `pubblicazioni` | object | Dettagli sulle date di creazione e pubblicazione. | |
+| `pubblicazioni.DATA_CREAZIONE` | string | Data di creazione della pubblicazione. | Formato YYYY-MM-DD. |
+| `pubblicazioni.DATA_PUBBLICAZIONE` | string | Data di pubblicazione. | Formato YYYY-MM-DD. |
+| `categorie_opera` | array of objects | Categorie di opere o servizi. | Ogni oggetto contiene `COD_TIPO_CATEGORIA`, `DESCRIZIONE`, `DESCRIZIONE_TIPO_CATEGORIA`, `ID_CATEGORIA`. |
+| `categorie_dpcm_aggregazione` | null | Categorie DPCM di aggregazione. | Attualmente `null`. |
+| `lavorazioni` | null | Dettagli sulle lavorazioni. | Attualmente `null`. |
+| `incaricati` | array of objects | Dettagli sugli incaricati (es. RUP). | Ogni oggetto contiene `COD_RUOLO`, `COGNOME`, `DESCRIZIONE_RUOLO`, `NOME`. |
+| `partecipanti` | array of objects | Dettagli sui partecipanti alla gara. | Ogni oggetto contiene `COD_GRUPPO`, `COD_RUOLO`, `CODICE_FISCALE`, `DENOMINAZIONE`, `FLAG_AGGIUDICATARIO`, `RUOLO`, `TIPO_SOGGETTO`. |
+| `aggiudicazione` | array of objects | Dettagli sull'aggiudicazione della gara. | Ogni oggetto contiene `ASTA_ELETTRONICA`, `COD_ESITO`, `COD_PRESTAZIONI_COMPRESE`, `CRITERIO_AGGIUDICAZIONE`, `DATA_AGGIUDICAZIONE_DEFINITIVA`, `DATA_COMUNICAZIONE_ESITO`, `ESITO`, `FLAG_PROC_ACCELERATA`, `FLAG_SCOMPUTO`, `FLAG_SUBAPPALTO`, `ID_AGGIUDICAZIONE`, `IMPORTO_AGGIUDICAZIONE`, `MASSIMO_RIBASSO`, `MINIMO_RIBASSO`, `N_MANIF_INTERESSE`, `NUM_IMPRESE_INVITATE`, `NUM_IMPRESE_OFFERENTI`, `NUM_IMPRESE_RICHIEDENTI`, `NUMERO_OFFERTE_AMMESSE`, `NUMERO_OFFERTE_ESCLUSE`, `PRESTAZIONI_COMPRESE`. |
+| `quadro_economico` | array of objects | Dettagli sul quadro economico della gara. | Ogni oggetto contiene `DESCRIZIONE_EVENTO`, `DETTAGLIO_EVENTO`, `ID_AGGIUDICAZIONE`, `IMPORTO_FORNITURE`, `IMPORTO_LAVORI`, `IMPORTO_PROGETTAZIONE`, `IMPORTO_SERVIZI`, `IMPORTO_SICUREZZA`, `SOMME_A_DISPOSIZIONE`, `ULTERIORI_ONERI_NON_SOGGETTI_RIBASSO`. |
+| `fonti_finanziamento` | array of objects | Dettagli sulle fonti di finanziamento. | Ogni oggetto contiene `ALTRO`, `APPORTO_DI_CAPITALI_PRIVATI`, `ENTRATE_CON_DEST_VINCOLATA_PRIVATI`, `ENTRATE_CON_DEST_VINCOLATA_PUBBLICA_COMUNITARIA`, `ENTRATE_CON_DEST_VINCOLATA_PUBBLICA_NAZIONALE_ALTRI`, `ENTRATE_CON_DEST_VINCOLATA_PUBBLICA_NAZIONALE_CENTRALE`, `ENTRATE_CON_DEST_VINCOLATA_PUBBLICA_NAZIONALE_LOCALE`, `ENTRATE_CON_DEST_VINCOLATA_PUBBLICA_NAZIONALE_REGIONALE`, `FONDI_DI_BILANCIO_DELLA_STAZIONE_APPALTANTE`, `FONDI_DI_BILANCIO_DELLAMMINISTRAZIONE_COMPETENTE`, `ID_AGGIUDICAZIONE`, `MUTUO`, `SFRUTTAMENTO_ECONOMICO_E_FUNZIONALE_DEL_BENE`, `TRASFERIMENTO_DI_IMMOBILI_EX_ART53_C6_DLGS_N163_06_ECONOMIA_SU_STANZIAMENTI_NON_VINCOLATI`. |
+| `avvio_contratto` | null | Dettagli sull'avvio del contratto. | Attualmente `null`. |
+| `stati_avanzamento` | null | Dettagli sugli stati di avanzamento. | Attualmente `null`. |
+| `collaudo` | null | Dettagli sul collaudo. | Attualmente `null`. |
+| `varianti` | null | Dettagli sulle varianti. | Attualmente `null`. |
+| `fine_contratto` | null | Dettagli sulla fine del contratto. | Attualmente `null`. |
+| `subappalti` | null | Dettagli sui subappalti. | Attualmente `null`. |
+| `sospensioni` | null | Dettagli sulle sospensioni. | Attualmente `null`. |
+| `avvalimenti` | null | Dettagli sugli avvalimenti. | Attualmente `null`. |
