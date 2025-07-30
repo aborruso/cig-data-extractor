@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / dll files
+__pycache__/
+*.pyc
+*.pyd
+*.so
+
+# Distributions / packaging
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+
+# PyInstaller
+*.spec
+
+# Unit test / coverage reports
+.coverage
+.pytest_cache/
+htmlcov/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.Trashes
+Thumbs.db
+ehthumbs.db
+*.json # Output JSON files
+*.log # Log files
+
+# Virtual environment
+venv/
+
+# Windows Zone.Identifier
+Zone.Identifier
