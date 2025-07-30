@@ -52,7 +52,11 @@ Questo documento definisce i requisiti per il "CIG Data Extractor", uno strument
 
 ## 5. Considerazioni Tecniche
 
-* Stack Tecnologico: Python 3, libreria `requests`, PyInstaller.
+* Stack Tecnologico: Python 3, PyInstaller.
+* Dipendenze Python:
+    * `requests`: Per effettuare richieste HTTP all'API dell'ANAC.
+    * `setuptools`: Per la creazione del pacchetto Python.
+    * `build`: Per la creazione dei pacchetti di distribuzione (sdist e wheel).
 * Endpoint API: `https://dati.anticorruzione.it/api/v1/chart/data` (endpoint POST).
 * Gestione Errori: Gestione di base degli errori di rete e delle risposte API.
 * Verifica SSL: Attualmente disabilitata (`verify=False`) nella chiamata `requests` per aggirare potenziali problemi di certificato. Questo dovrebbe essere rivisto per ambienti di produzione.
