@@ -6,10 +6,10 @@ Lo strumento è progettato per recuperare i dati dettagliati di un CIG specifico
 
 ## Caratteristiche
 
-*   Estrazione Dati CIG: Recupera informazioni complete per un CIG fornito.
-*   Output JSON Grezzo: Salva la risposta JSON originale dell'API (`<CIG_NUMBER>_raw.json`).
-*   Output JSON Light: Salva una versione elaborata del JSON, con i campi JSON annidati parsificati (`<CIG_NUMBER>.json`).
-*   Eseguibile Autoconsistente: Permette l'esecuzione dello strumento su sistemi senza un ambiente Python installato.
+* Estrazione Dati CIG: Recupera informazioni complete per un CIG fornito.
+* Output JSON Grezzo: Salva la risposta JSON originale dell'API (`<CIG_NUMBER>_raw.json`).
+* Output JSON Light: Salva una versione elaborata del JSON, con i campi JSON annidati parsificati (`<CIG_NUMBER>.json`).
+* Eseguibile Autoconsistente: Permette l'esecuzione dello strumento su sistemi senza un ambiente Python installato.
 
 ## Requisiti
 
@@ -19,8 +19,8 @@ Nessun requisito aggiuntivo. L'eseguibile include tutte le dipendenze necessarie
 
 ### Per lo Script Python (se si esegue il `.py`)
 
-*   Python 3.x
-*   Libreria `requests`
+* Python 3.x
+* Libreria `requests`
 
 Per installare la libreria `requests`:
 
@@ -32,9 +32,9 @@ pip install requests
 
 ### Utilizzo dell'Eseguibile Autoconsistente
 
-1.  Scarica l'eseguibile dalla directory `dist/` (o crealo seguendo le istruzioni di sviluppo).
-2.  Apri un terminale e naviga nella directory dove si trova l'eseguibile.
-3.  Esegui il comando, sostituendo `<CIG_NUMBER>` con il CIG desiderato:
+1. Scarica l'eseguibile dalla directory `dist/` (o crealo seguendo le istruzioni di sviluppo).
+2. Apri un terminale e naviga nella directory dove si trova l'eseguibile.
+3. Esegui il comando, sostituendo `<CIG_NUMBER>` con il CIG desiderato:
 
     ```bash
     ./get_cig_data_requests <CIG_NUMBER>
@@ -48,9 +48,9 @@ pip install requests
 
 ### Utilizzo dello Script Python
 
-1.  Assicurati di avere Python 3 e la libreria `requests` installati.
-2.  Apri un terminale e naviga nella directory dove si trova lo script `get_cig_data_requests.py`.
-3.  Esegui il comando, sostituendo `<CIG_NUMBER>` con il CIG desiderato:
+1. Assicurati di avere Python 3 e la libreria `requests` installati.
+2. Apri un terminale e naviga nella directory dove si trova lo script `get_cig_data_requests.py`.
+3. Esegui il comando, sostituendo `<CIG_NUMBER>` con il CIG desiderato:
 
     ```bash
     python3 get_cig_data_requests.py <CIG_NUMBER>
@@ -66,13 +66,13 @@ pip install requests
 
 Dopo l'esecuzione, verranno creati due file JSON nella stessa directory:
 
-*   `<CIG_NUMBER>_raw.json`: Contiene la risposta JSON grezza dall'API.
-*   `<CIG_NUMBER>.json`: Contiene una versione elaborata del JSON, con i campi annidati parsificati per una maggiore leggibilità.
+* `<CIG_NUMBER>_raw.json`: Contiene la risposta JSON grezza dall'API.
+* `<CIG_NUMBER>.json`: Contiene una versione elaborata del JSON, con i campi annidati parsificati per una maggiore leggibilità.
 
 Esempio per CIG `918052266A`:
 
-*   `918052266A_raw.json`
-*   `918052266A.json`
+* `918052266A_raw.json`
+* `918052266A.json`
 
 ## Sviluppo
 
