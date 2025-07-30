@@ -51,25 +51,6 @@ cig-data-extractor 918052266A
 cig-data-extractor 918052266A -o /tmp/my_cig_data.json
 ```
 
-## Sviluppo e Uso Avanzato
-
-Questa sezione è dedicata agli sviluppatori o agli utenti che desiderano utilizzare lo script Python direttamente o creare l'eseguibile autonomamente.
-
-### Per l'Eseguibile Autoconsistente (Solo Linux)
-
-Nessun requisito aggiuntivo. L'eseguibile include tutte le dipendenze necessarie. **Attualmente, l'eseguibile compilato è disponibile solo per sistemi Linux.**
-
-### Per lo Script Python (se si esegue il `.py`)
-
-* Python 3.x
-* Libreria `requests`
-
-Per installare la libreria `requests`:
-
-```bash
-pip install requests
-```
-
 ## Output
 
 Dopo l'esecuzione, verranno creati due file JSON nella stessa directory (o un singolo file light al percorso specificato con `-o`):
@@ -144,6 +125,23 @@ Ecco un estratto del file `918052266A.json` (versione light):
 ```
 
 ## Sviluppo
+
+Questa sezione è dedicata agli sviluppatori o agli utenti che desiderano utilizzare lo script Python direttamente o creare l'eseguibile autonomamente.
+
+### Per l'Eseguibile Autoconsistente (Solo Linux)
+
+Nessun requisito aggiuntivo. L'eseguibile include tutte le dipendenze necessarie. **Attualmente, l'eseguibile compilato è disponibile solo per sistemi Linux.**
+
+### Per lo Script Python (se si esegue il `.py`)
+
+* Python 3.x
+* Libreria `requests`
+
+Per installare la libreria `requests`:
+
+```bash
+pip install requests
+```
 
 ### Creazione dell'Eseguibile Autoconsistente
 
