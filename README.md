@@ -10,7 +10,7 @@ Lo strumento è progettato per recuperare i dati dettagliati di un CIG specifico
 * Output JSON Grezzo: Salva la risposta JSON originale dell'API (`<CIG_NUMBER>_raw.json`).
 * Output JSON Light: Salva una versione elaborata del JSON, con i campi JSON annidati parsificati (`<CIG_NUMBER>.json`).
 * Eseguibile Autoconsistente: Permette l'esecuzione dello strumento su sistemi senza un ambiente Python installato.
-* **Opzione di Output Personalizzata:** Permette di specificare una directory di output per salvare solo il file JSON light.
+* **Opzione di Output Personalizzata:** Permette di specificare il percorso completo del file di output per il JSON light, con controllo di esistenza del file.
 
 ## Requisiti
 
@@ -35,41 +35,41 @@ pip install requests
 
 1. Scarica l'eseguibile dalla directory `dist/` (o crealo seguendo le istruzioni di sviluppo).
 2. Apri un terminale e naviga nella directory dove si trova l'eseguibile.
-3. Esegui il comando, sostituendo `<CIG_NUMBER>` con il CIG desiderato. Puoi anche specificare una directory di output con l'opzione `-o` o `--output-path`.
+3. Esegui il comando, sostituendo `<CIG_NUMBER>` con il CIG desiderato. Puoi anche specificare il percorso completo del file di output per il JSON light con l'opzione `-o` o `--output-path`.
 
     ```bash
-    ./get_cig_data_requests <CIG_NUMBER> [-o <OUTPUT_DIRECTORY>]
+    ./get_cig_data_requests <CIG_NUMBER> [-o <OUTPUT_FILE_PATH>]
     ```
 
     Esempi:
     ```bash
     ./get_cig_data_requests 918052266A
-    ./get_cig_data_requests 918052266A -o /tmp/cig_output
+    ./get_cig_data_requests 918052266A -o /tmp/my_cig_data.json
     ```
 
 ### Utilizzo dello Script Python
 
 1. Assicurati di avere Python 3 e la libreria `requests` installati.
 2. Apri un terminale e naviga nella directory dove si trova lo script `get_cig_data_requests.py`.
-3. Esegui il comando, sostituendo `<CIG_NUMBER>` con il CIG desiderato. Puoi anche specificare una directory di output con l'opzione `-o` o `--output-path`.
+3. Esegui il comando, sostituendo `<CIG_NUMBER>` con il CIG desiderato. Puoi anche specificare il percorso completo del file di output per il JSON light con l'opzione `-o` o `--output-path`.
 
     ```bash
-    python3 get_cig_data_requests.py <CIG_NUMBER> [-o <OUTPUT_DIRECTORY>]
+    python3 get_cig_data_requests.py <CIG_NUMBER> [-o <OUTPUT_FILE_PATH>]
     ```
 
     Esempi:
 
     ```bash
     python3 get_cig_data_requests.py 918052266A
-    python3 get_cig_data_requests.py 918052266A -o /tmp/cig_output
+    python3 get_cig_data_requests.py 918052266A -o /tmp/my_cig_data.json
     ```
 
 ## Output
 
-Dopo l'esecuzione, verranno creati due file JSON nella stessa directory (o nella directory specificata con `-o` solo per il file light):
+Dopo l'esecuzione, verranno creati due file JSON nella stessa directory (o un singolo file light al percorso specificato con `-o`):
 
 * `<CIG_NUMBER>_raw.json`: Contiene la risposta JSON grezza dall'API. **Questo file viene salvato solo se non si specifica l'opzione `-o`.**
-* `<CIG_NUMBER>.json`: Contiene una versione elaborata del JSON, con i campi annidati parsificati per una maggiore leggibilità.
+* `<CIG_NUMBER>.json`: Contiene una versione elaborata del JSON, con i campi annidati parsificati per una maggiore leggibilità. Se l'opzione `-o` è specificata, questo file verrà salvato al percorso indicato.
 
 Esempio per CIG `918052266A`:
 
