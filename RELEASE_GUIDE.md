@@ -57,7 +57,10 @@ Per fare ciò:
 2.  Elimina il token con ambito "All projects".
 3.  Crea un nuovo token API specificamente per il progetto `cig-data-extractor`.
 4.  Aggiorna il segreto `PYPI_API_TOKEN` nel tuo repository GitHub con il nuovo token specifico per il progetto.
-## Mini-guida: Come distinguere partecipanti e vincitori in un file JSON di gara ANAC
+
+## Guida all'Interpretazione dei Dati JSON ANAC
+
+### Mini-guida: Come distinguere partecipanti e vincitori in un file JSON di gara ANAC
 
 Nei file JSON ANAC relativi alle gare pubbliche, per capire **chi ha partecipato** e **chi ha vinto**, bisogna analizzare principalmente due sezioni del file:
 
