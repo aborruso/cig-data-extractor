@@ -1,5 +1,7 @@
 # CIG Data Extractor
 
+> **⚠️ ATTENZIONE: Questo strumento non funziona più.** ANAC ha dismesso la vecchia API Superset su `dati.anticorruzione.it` e migrato il portale su `dettaglio-cig.anticorruzione.it`, una nuova applicazione web protetta da captcha (mosparo). L'endpoint API utilizzato da questo tool (`/api/v1/chart/data` con dataset `DETTAGLIO_CIG`) restituisce ora `404 - Dataset does not exist`. La nuova API (`/api/v1/operations/consultaCIG/1.0/exec`) richiede token anti-spam non bypassabili programmaticamente.
+
 [![PyPI version](https://badge.fury.io/py/cig-data-extractor.svg)](https://badge.fury.io/py/cig-data-extractor)
 
 Questo repository contiene uno script Python e un eseguibile standalone per l'estrazione automatizzata di dati relativi ai CIG (Codice Identificativo Gara) dal portale `dati.anticorruzione.it` dell'Autorità Nazionale Anticorruzione (ANAC).
